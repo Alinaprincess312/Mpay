@@ -4,13 +4,8 @@
 }
 
 * { box-sizing: border-box; }
-
 html, body { min-height: 100%; margin: 0; }
-
-body {
-  background: #075a28;
-  font-family: system-ui, sans-serif;
-}
+body { background: #075a28; font-family: system-ui, sans-serif; }
 
 #landing {
   min-height: 100svh;
@@ -35,44 +30,25 @@ body {
 }
 
 .tile:not(.video-tile) { background: transparent; }
-
-.video-tile {
-  overflow: hidden;
-  background: rgba(255, 255, 255, .12);
-  cursor: default;
-  isolation: isolate;
-}
-
-video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  background: #000;
-}
+.video-tile { overflow: hidden; background: rgba(255, 255, 255, .12); cursor: default; isolation: isolate; }
+video { display: block; width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: cover; background: #000; }
 
 @media (max-width: 700px), (max-aspect-ratio: 1 / 1) {
   #landing {
-    min-height: 100dvh;
-    padding: 7vw 4vw;
-    background-position: left center;
-    background-size: auto 100%;
+    min-height: 0;
+    aspect-ratio: 1672 / 943;
+    padding: 2.4vw;
+    background-position: top center;
+    background-size: 100% auto;
   }
 
   .tile-grid {
-    width: min(92vw, 430px);
+    width: 39.1vw;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, clamp(140px, 38vw, 205px));
-    gap: clamp(9px, 2.7vw, 14px);
+    grid-template-rows: repeat(2, 15.2vw);
+    gap: 1.65vw;
   }
 
-  .tile {
-    border-radius: clamp(12px, 4vw, 19px);
-  }
-
-  video {
-    object-position: center;
-  }
+  .tile { border-radius: 1.5vw; }
+  video { object-position: center; }
 }
