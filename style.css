@@ -1,0 +1,55 @@
+:root {
+  --target-url: "https://1wsvyz.com/?open=register&p=vklc";
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; margin: 0; }
+
+body {
+  background: #075a28;
+  font-family: system-ui, sans-serif;
+}
+
+#landing {
+  min-height: 100svh;
+  cursor: pointer;
+  background: #075a28 url("assets/background.png") center / cover no-repeat;
+  padding: clamp(18px, 4vw, 55px);
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 310px));
+  gap: clamp(12px, 1.6vw, 26px);
+  width: min(42vw, 650px);
+}
+
+.tile {
+  display: block;
+  min-height: clamp(130px, 15vw, 255px);
+  border-radius: clamp(14px, 1.6vw, 25px);
+}
+
+/* Прозрачные ссылки сохраняют исходное фоновое изображение видимым. */
+.tile:not(.video-tile) { background: transparent; }
+
+.video-tile {
+  overflow: hidden;
+  background: rgba(255, 255, 255, .12);
+  cursor: default;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+@media (max-width: 700px) {
+  #landing { background-position: 63% center; }
+  .tile-grid { width: min(100%, 480px); }
+  .tile { min-height: 130px; }
+}
