@@ -4,8 +4,13 @@
 }
 
 * { box-sizing: border-box; }
+
 html, body { min-height: 100%; margin: 0; }
-body { background: #075a28; font-family: system-ui, sans-serif; }
+
+body {
+  background: #075a28;
+  font-family: system-ui, sans-serif;
+}
 
 #landing {
   min-height: 100svh;
@@ -29,16 +34,45 @@ body { background: #075a28; font-family: system-ui, sans-serif; }
   border-radius: clamp(14px, 1.6vw, 25px);
 }
 
+/* Прозрачные ссылки сохраняют исходное фоновое изображение видимым. */
 .tile:not(.video-tile) { background: transparent; }
-.video-tile { overflow: hidden; background: rgba(255, 255, 255, .12); cursor: default; isolation: isolate; }
-video { display: block; width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: cover; background: #000; }
+
+.video-tile {
+  overflow: hidden;
+  background: rgba(255, 255, 255, .12);
+  cursor: default;
+  isolation: isolate;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  background: #000;
+}
 
 @media (max-width: 700px), (max-aspect-ratio: 1 / 1) {
-  #landing { min-height: 100dvh; padding: 16px; background: #075a28; }
-  .tile-grid { width: min(100%, 520px); margin: 0 auto; grid-template-columns: 1fr; grid-template-rows: repeat(4, auto); gap: 14px; }
-  .tile { aspect-ratio: 311 / 255; border-radius: 20px; background-image: url("assets/background.png"); background-repeat: no-repeat; background-size: 538% auto; }
-  .tile-one { background-position: 3% 7%; }
-  .tile-three { background-position: 3% 48%; }
-  .tile-four { background-position: 28% 48%; }
-  .video-tile { background-image: none; }
+  #landing {
+    position: relative;
+    min-height: 0;
+    aspect-ratio: 941 / 1672;
+    padding: 0;
+    background: #075a28 url("assets/mobile-background.png") top center / 100% auto no-repeat;
+  }
+
+  /* Карточки уже собраны в вертикальном фоне; поверх него остаётся только видео. */
+  .tile-grid {
+    position: absolute;
+    top: 16.5%;
+    left: 4.7%;
+    display: block;
+    width: 50.5%;
+    height: 11.5%;
+  }
+
+  .tile:not(.video-tile) { display: none; }
+  .video-tile { display: block; width: 100%; height: 100%; border-radius: 5vw; }
 }
